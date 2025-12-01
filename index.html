@@ -77,34 +77,38 @@
 
         .photo-container {
             position: relative;
-            width: 200px;
-            height: 200px;
+            /* Match the photo's elliptical proportions: */
+            width: 204px;    /* Original 200px * 102% = ~204px */
+            height: 256px;   /* Original 200px * 128% = 256px */
             margin: 0 auto 30px;
+            /* This creates an ellipse when width ≠ height: */
             border-radius: 50%;
             background: var(--gradient);
             padding: 5px;
             transition: transform 0.5s ease;
+            /* Ensure it centers properly: */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .photo-container:hover {
-            transform: scale(1.05);
+            transform: scale(1.15);
         }
 
         .photo {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
+            border-radius: 50%;       /* key fix: ellipse mask */
             overflow: hidden;
             border: 3px solid var(--dark-bg);
-            /* Add the line below to scale the photo area up */
-            transform: scale(0.90); /* Try values like 0.93, 0.95, 0.98 */
         }
 
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
+            object-position: center 45%; 
         }
 
         .title {
@@ -410,13 +414,17 @@
         }
 
         /* Responsive */
-        @media (max-width: 992px) {
+        @media (max-width: 768) {
             .card-grid {
                 grid-template-columns: 1fr;
             }
             
             .tech-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            .photo-container {
+                width: 170px;       /* Scaled down proportionally */
+                height: 213px;      /* 170px * (128/102) ≈ 213px */
             }
             
             h1 {
@@ -549,7 +557,7 @@
         <div class="container header-content">
             <div class="photo-container fade-in">
                 <div class="photo">
-                    <img src="/assets/photo.png" alt="Krzysztof Przeniosło">
+                    <img src="assets/photo.png" alt="Krzysztof Przeniosło">
                 </div>
             </div>
             
