@@ -1,228 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Krzysztof Przeniosło – Cloud & DevOps Engineer</title>
-<style>
-/* Reset & fonts */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f5f7fa;
-    color: #333;
-}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krzysztof Przeniosło – Cloud & DevOps Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Header */
-header {
-    background: linear-gradient(135deg, #1e1e2f, #2c3555);
-    color: white;
-    text-align: center;
-    padding: 100px 20px 60px;
-    position: relative;
-}
+        :root {
+            --primary: #00d9ff;
+            --primary-dark: #00a8cc;
+            --secondary: #7b68ee;
+            --dark-bg: #0a0a0f;
+            --card-bg: #15151f;
+            --card-hover: #1c1c2a;
+            --text: #e0e0e9;
+            --text-light: #a0a0b0;
+            --border: #2a2a3a;
+            --success: #00ff9d;
+            --shadow: rgba(0, 0, 0, 0.4);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
 
-header .photo {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 5px solid #fff;
-    margin: 0 auto 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    transition: transform 0.3s ease;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-header .photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;       
-    object-position: center; 
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-header .photo:hover {
-    transform: scale(1.05);
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-header h1 {
-    font-size: 46px;
-    margin: 10px 0 5px;
-}
+        /* Header */
+        header {
+            position: relative;
+            padding: 120px 0 80px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, var(--dark-bg) 70%);
+            overflow: hidden;
+        }
 
-header p {
-    font-size: 20px;
-    margin-top: 5px;
-    opacity: 0.85;
-}
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient);
+            box-shadow: 0 0 20px var(--primary);
+        }
 
-/* Sections */
-section {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
 
-/* Cards */
-.card {
-    background: white;
-    padding: 30px 35px;
-    border-radius: 15px;
-    margin-bottom: 35px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .photo-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: var(--gradient);
+            padding: 5px;
+            transition: transform 0.5s ease;
+        }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-}
+        .photo-container:hover {
+            transform: scale(1.05);
+        }
 
-h2 {
-    font-size: 30px;
-    margin-bottom: 15px;
-    font-weight: 600;
-    color: #1e1e2f;
-    border-bottom: 2px solid #006aff;
-    display: inline-block;
-    padding-bottom: 5px;
-}
+        .photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--dark-bg);
+        }
 
-ul {
-    padding-left: 20px;
-}
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
 
-ul li {
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
+        .title {
+            margin-bottom: 15px;
+        }
 
-/* Tech stack section */
-.tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 15px;
-}
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
 
-.tech-stack span {
-    background: #e3e6f0;
-    color: #1e1e2f;
-    padding: 8px 14px;
-    border-radius: 12px;
-    font-weight: 500;
-    font-size: 14px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    transition: background 0.3s ease;
-}
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
 
-.tech-stack span:hover {
-    background: #006aff;
-    color: white;
-}
+        .badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
 
-/* Links */
-a {
-    color: #006aff;
-    text-decoration: none;
-}
+        .badge {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            font-family: 'JetBrains Mono', monospace;
+        }
 
-a:hover {
-    text-decoration: underline;
-}
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
 
-/* Footer */
-footer {
-    background: #1e1e2f;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 50px;
-    font-size: 14px;
-}
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+        }
 
-/* Responsive */
-@media(max-width: 600px) {
-    header h1 {
-        font-size: 34px;
-    }
-    header p {
-        font-size: 16px;
-    }
-    .card {
-        padding: 25px 20px;
-    }
-    .tech-stack {
-        justify-content: center;
-    }
-}
-</style>
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+            transform-origin: left;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: var(--card-hover);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--text);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card h3 i {
+            color: var(--primary);
+        }
+
+        .card p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        /* Lists */
+        .service-list, .contact-list {
+            list-style: none;
+        }
+
+        .service-list li, .contact-list li {
+            margin-bottom: 14px;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .service-list li::before, .contact-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .tech-item {
+            background: rgba(123, 104, 238, 0.1);
+            color: var(--secondary);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tech-item:hover {
+            background: rgba(123, 104, 238, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Contact */
+        .contact-list a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-list a:hover {
+            color: var(--success);
+            text-decoration: underline;
+        }
+
+        .business-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #08080c;
+            padding: 50px 0;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-link {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 217, 255, 0.3);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 60px;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .photo-container {
+                width: 170px;
+                height: 170px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tech-stack {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
 </head>
 <body>
-
-<header>
-    <div class="photo">
-        <img src="/assets/photo.png" alt="Profile Photo">
-    </div>
-    <h1>Krzysztof Przeniosło</h1>
-    <p>Cloud & DevOps Engineer • AWS • CI/CD • Kubernetes • Automation • Linux</p>
-</header>
-
-<section>
-    <div class="card">
-        <h2>About Me</h2>
-        <p>
-            I am a Cloud/DevOps Engineer with strong hands-on experience in cloud platforms,
-            automation, CI/CD pipelines, container orchestration, and high-availability systems.
-            I provide Cloud & DevOps services through B2B contracts and have been running my sole proprietorship (JDG) since 2023.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>Services</h2>
-        <ul>
-            <li>Design and maintenance of AWS cloud infrastructure</li>
-            <li>CI/CD pipelines (GitHub Actions, GitLab CI, Jenkins)</li>
-            <li>Containerization and Kubernetes (EKS, on-prem clusters)</li>
-            <li>Monitoring, observability, logging and alerting</li>
-            <li>Infrastructure as Code (Terraform, Ansible)</li>
-            <li>Automation, cloud cost optimization</li>
-            <li>Technical consulting and architecture audits</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>Tech Stack</h2>
-        <div class="tech-stack">
-            <span>AWS</span>
-            <span>Terraform</span>
-            <span>Terragrunt</span>
-            <span>Ansible</span>
-            <span>Bash</span>
-            <span>Docker</span>
-            <span>Apache HTTP, HAProxy, Nginx</span>
-            <span>ArgoCD</span>
-            <span>OVM Virtualization / VMware Virtualization</span>
-            <span>Kubernetes/EKS</span>
-            <span>Jenkins</span>
-            <span>GitLab CI</span>
-            <span>Linux</span>
-            <span>PostgreSQL</span>
-            <span>Python</span>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="photo-container fade-in">
+                <div class="photo">
+                    <img src="/assets/photo.png" alt="Krzysztof Przeniosło">
+                </div>
+            </div>
+            
+            <div class="title fade-in">
+                <h1>Krzysztof Przeniosło</h1>
+                <p class="tagline">Cloud & DevOps Engineer</p>
+            </div>
+            
+            <div class="badges fade-in">
+                <span class="badge">AWS Certified</span>
+                <span class="badge">Kubernetes</span>
+                <span class="badge">CI/CD</span>
+                <span class="badge">Infrastructure as Code</span>
+                <span class="badge">Automation</span>
+            </div>
         </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <h3><i class="fas fa-user-tie"></i> Professional Profile</h3>
+                    <p>I am a Cloud/DevOps Engineer with extensive hands-on experience designing, implementing, and maintaining scalable cloud infrastructure, automation pipelines, and high-availability systems.</p>
+                    <p>Through my sole proprietorship (JDG) established in 2023, I provide expert Cloud & DevOps services via B2B contracts, delivering solutions that optimize performance, security, and cost-efficiency.</p>
+                    <p>My approach combines technical expertise with strategic thinking to deliver infrastructure that not only meets current needs but also scales for future growth.</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <h3><i class="fas fa-bullseye"></i> Mission</h3>
+                    <p>My mission is to empower businesses with robust, scalable, and efficient cloud infrastructure that accelerates development cycles, enhances reliability, and reduces operational overhead.</p>
+                    <p>I believe in Infrastructure as Code, automation, and continuous improvement as fundamental principles for modern IT operations.</p>
+                    <p>I work closely with clients to understand their unique challenges and deliver tailored solutions that align with their business objectives and technical requirements.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2 class="section-title">Services</h2>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <h3><i class="fas fa-cloud"></i> Cloud Infrastructure</h3>
+                    <ul class="service-list">
+                        <li>Design and implementation of AWS cloud architecture</li>
+                        <li>Cloud migration strategies and execution</li>
+                        <li>Cost optimization and resource management</li>
+                        <li>Multi-region and high-availability setups</li>
+                        <li>Security hardening and compliance</li>
+                    </ul>
+                </div>
+                
+                <div class="card fade-in">
+                    <h3><i class="fas fa-cogs"></i> DevOps & Automation</h3>
+                    <ul class="service-list">
+                        <li>CI/CD pipeline implementation (GitHub Actions, GitLab CI, Jenkins)</li>
+                        <li>Infrastructure as Code with Terraform & Terragrunt</li>
+                        <li>Configuration management with Ansible</li>
+                        <li>Container orchestration with Kubernetes/EKS</li>
+                        <li>Monitoring, observability, and alerting systems</li>
+                    </ul>
+                </div>
+                
+                <div class="card fade-in">
+                    <h3><i class="fas fa-headset"></i> Consulting & Support</h3>
+                    <ul class="service-list">
+                        <li>Technical consulting and architecture reviews</li>
+                        <li>Cloud strategy and best practices advisory</li>
+                        <li>Performance optimization and troubleshooting</li>
+                        <li>Team training and knowledge transfer</li>
+                        <li>24/7 support and maintenance contracts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section id="tech">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="card fade-in">
+                <h3><i class="fas fa-code"></i> Technologies & Tools</h3>
+                <p>I work with a comprehensive suite of modern DevOps and cloud technologies:</p>
+                
+                <div class="tech-stack">
+                    <span class="tech-item">AWS</span>
+                    <span class="tech-item">Terraform</span>
+                    <span class="tech-item">Terragrunt</span>
+                    <span class="tech-item">Ansible</span>
+                    <span class="tech-item">Kubernetes/EKS</span>
+                    <span class="tech-item">Docker</span>
+                    <span class="tech-item">Jenkins</span>
+                    <span class="tech-item">GitLab CI</span>
+                    <span class="tech-item">GitHub Actions</span>
+                    <span class="tech-item">ArgoCD</span>
+                    <span class="tech-item">Bash</span>
+                    <span class="tech-item">Python</span>
+                    <span class="tech-item">Linux</span>
+                    <span class="tech-item">Apache/Nginx</span>
+                    <span class="tech-item">HAProxy</span>
+                    <span class="tech-item">PostgreSQL</span>
+                    <span class="tech-item">Prometheus</span>
+                    <span class="tech-item">Grafana</span>
+                    <span class="tech-item">VMware/OVM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <div class="card fade-in">
+                <h3><i class="fas fa-envelope"></i> Get In Touch</h3>
+                <ul class="contact-list">
+                    <li><strong>Email:</strong> <a href="mailto:krzysztof.przenioslo@gmail.com"><i class="fas fa-envelope"></i> krzysztof.przenioslo@gmail.com</a></li>
+                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/krzysztof-przeniosło-91125a144/" target="_blank"><i class="fab fa-linkedin"></i> View Profile</a></li>
+                    <li><strong>Availability:</strong> Available for B2B contracts and consulting engagements</li>
+                </ul>
+                
+                <div class="business-info">
+                    <p><strong>Business Details:</strong></p>
+                    <p>NIP: 6821797190</p>
+                    <p>REGON: 521219465</p>
+                    <p>Sole Proprietorship (JDG) since 2023</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/krzysztof-przeniosło-91125a144/" class="social-link" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:krzysztof.przenioslo@gmail.com" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="#" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            
+            <p class="copyright">© 2025 Krzysztof Przeniosło — Cloud & DevOps Engineer — All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
     </div>
 
-    <div class="card">
-        <h2>Contact</h2>
-        <p>E-mail: <a href="mailto:krzysztof.przenioslo@gmail.com">krzysztof.przenioslo@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/krzysztof-przeniosło-91125a144/">View Profile</a></p>
-        <p>NIP: 6821797190 • REGON: 521219465</p>
-    </div>
-</section>
-
-<footer>
-    © 2025 — Cloud & DevOps Engineer — All rights reserved.
-</footer>
-
+    <script>
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for fade elements
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
