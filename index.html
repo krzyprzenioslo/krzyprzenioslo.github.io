@@ -521,6 +521,24 @@
         .tech-card:hover::after {
             opacity: 1;
         }
+        /* New: Styles for the Monitoring & Observability section */
+        .tech-grid-monitoring {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+/* Style for the missing/black icons (Ansible, Linux) */
+        .devicon-ansible-plain,
+        .devicon-linux-plain {
+            color: #e0e0e9 !important; /* Uses your --text variable's value */
+        }
+
+/* Specific color for GitHub icon (replacing GitHub Actions) */
+        .tech-icon-github-colored {
+            color: #f0f6fc; /* GitHub's light color for dark backgrounds */
+        }
     </style>
 </head>
 <body>
