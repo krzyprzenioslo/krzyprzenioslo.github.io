@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <style>
         /* Base & Reset */
         * {
@@ -90,8 +91,8 @@
         }
 
         .photo {
-            width: 85%;
-            height: 85%;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid var(--dark-bg);
@@ -249,29 +250,71 @@
             font-weight: bold;
         }
 
-        /* Tech Stack */
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
+        /* NEW: Enhanced Tech Stack with Icons */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
-        .tech-item {
-            background: rgba(123, 104, 238, 0.1);
-            color: var(--secondary);
-            padding: 10px 18px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
+        .tech-card {
+            background: linear-gradient(145deg, rgba(21, 21, 31, 0.9), rgba(28, 28, 42, 0.9));
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid rgba(123, 104, 238, 0.2);
+            border: 1px solid rgba(42, 42, 58, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.15);
+            background: linear-gradient(145deg, rgba(28, 28, 42, 0.95), rgba(35, 35, 50, 0.95));
+        }
+
+        .tech-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-card:hover .tech-icon {
+            transform: scale(1.1);
+        }
+
+        .tech-name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
             font-family: 'JetBrains Mono', monospace;
         }
 
-        .tech-item:hover {
-            background: rgba(123, 104, 238, 0.2);
-            transform: translateY(-2px);
+        /* Tech Categories */
+        .tech-category {
+            margin-bottom: 40px;
+        }
+
+        .tech-category-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-category-title i {
+            color: var(--primary);
         }
 
         /* Contact */
@@ -370,6 +413,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .tech-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
             h1 {
                 font-size: 2.8rem;
             }
@@ -400,6 +447,20 @@
                 width: 170px;
                 height: 170px;
             }
+            
+            .tech-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 20px;
+            }
+            
+            .tech-card {
+                padding: 20px 15px;
+            }
+            
+            .tech-icon {
+                font-size: 2.2rem;
+                height: 50px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -412,8 +473,9 @@
                 align-items: center;
             }
             
-            .tech-stack {
-                justify-content: center;
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
         }
 
@@ -431,6 +493,33 @@
 
         .fade-in {
             animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* Tooltip for icons */
+        .tech-card {
+            position: relative;
+        }
+        
+        .tech-card::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .tech-card:hover::after {
+            opacity: 1;
         }
     </style>
 </head>
@@ -521,35 +610,239 @@
         </section>
 
         <!-- Tech Stack Section -->
-        <section id="tech">
-            <h2 class="section-title">Tech Stack</h2>
-            <div class="card fade-in">
-                <h3><i class="fas fa-code"></i> Technologies & Tools</h3>
-                <p>I work with a comprehensive suite of modern DevOps and cloud technologies:</p>
-                
-                <div class="tech-stack">
-                    <span class="tech-item">AWS</span>
-                    <span class="tech-item">Terraform</span>
-                    <span class="tech-item">Terragrunt</span>
-                    <span class="tech-item">Ansible</span>
-                    <span class="tech-item">Kubernetes/EKS</span>
-                    <span class="tech-item">Docker</span>
-                    <span class="tech-item">Jenkins</span>
-                    <span class="tech-item">GitLab CI</span>
-                    <span class="tech-item">GitHub Actions</span>
-                    <span class="tech-item">ArgoCD</span>
-                    <span class="tech-item">Bash</span>
-                    <span class="tech-item">Python</span>
-                    <span class="tech-item">Linux</span>
-                    <span class="tech-item">Apache/Nginx</span>
-                    <span class="tech-item">HAProxy</span>
-                    <span class="tech-item">PostgreSQL</span>
-                    <span class="tech-item">Prometheus</span>
-                    <span class="tech-item">Grafana</span>
-                    <span class="tech-item">VMware/OVM</span>
+<section id="tech">
+    <h2 class="section-title">Tech Stack</h2>
+    <div class="card fade-in">
+        <h3><i class="fas fa-code"></i> Technologies & Tools</h3>
+        <p>I work with a comprehensive suite of modern DevOps and cloud technologies:</p>
+        
+        <!-- Cloud Platforms -->
+        <div class="tech-category">
+            <h4 class="tech-category-title"><i class="fas fa-cloud"></i> Cloud Platforms</h4>
+            <div class="tech-grid">
+                <div class="tech-card fade-in" data-tooltip="Amazon Web Services">
+                    <div class="tech-icon">
+                        <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+                    </div>
+                    <div class="tech-name">AWS</div>
                 </div>
             </div>
-        </section>
+        </div>
+        
+        <!-- Infrastructure as Code -->
+        <div class="tech-category">
+            <h4 class="tech-category-title"><i class="fas fa-layer-group"></i> Infrastructure as Code</h4>
+            <div class="tech-grid">
+                <div class="tech-card fade-in" data-tooltip="Terraform">
+                    <div class="tech-icon">
+                        <i class="devicon-terraform-plain colored"></i>
+                    </div>
+                    <div class="tech-name">Terraform</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="Terragrunt">
+                    <div class="tech-icon">
+                        <!-- Corrected: Official Terragrunt "TG" icon -->
+                        <img src="https://terragrunt.gruntwork.io/img/favicon/logo-192.png" alt="Terragrunt" style="height: 40px;">
+                    </div>
+                    <div class="tech-name">Terragrunt</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="Ansible">
+                    <div class="tech-icon">
+                        <!-- Corrected: White Ansible logo for dark background -->
+                        <i class="devicon-ansible-plain"></i>
+                    </div>
+                    <div class="tech-name">Ansible</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Containerization & Orchestration -->
+        <div class="tech-category">
+            <h4 class="tech-category-title"><i class="fas fa-boxes"></i> Container & Orchestration</h4>
+            <div class="tech-grid">
+                <div class="tech-card fade-in" data-tooltip="Kubernetes">
+                    <div class="tech-icon">
+                        <i class="devicon-kubernetes-plain colored"></i>
+                    </div>
+                    <div class="tech-name">Kubernetes</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="Docker">
+                    <div class="tech-icon">
+                        <i class="devicon-docker-plain colored"></i>
+                    </div>
+                    <div class="tech-name">Docker</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="ArgoCD">
+                    <div class="tech-icon">
+                        <!-- Corrected: Official ArgoCD logo -->
+                        <img src="https://techicons.dev/icons/argocd" alt="ArgoCD" style="height: 40px;">
+                    </div>
+                    <div class="tech-name">ArgoCD</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CI/CD & Automation -->
+        <div class="tech-category">
+            <h4 class="tech-category-title"><i class="fas fa-sync-alt"></i> CI/CD & Automation</h4>
+            <div class="tech-grid">
+                <div class="tech-card fade-in" data-tooltip="Jenkins">
+                    <div class="tech-icon">
+                        <i class="devicon-jenkins-plain colored"></i>
+                    </div>
+                    <div class="tech-name">Jenkins</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="GitLab CI">
+                    <div class="tech-icon">
+                        <i class="devicon-gitlab-plain colored"></i>
+                    </div>
+                    <div class="tech-name">GitLab CI</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="TeamCity">
+                    <div class="tech-icon">
+                        <!-- Added: TeamCity Logo (requires attribution to jetbrains.com) -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/TeamCity_Icon.png" alt="TeamCity" style="height: 40px;">
+                    </div>
+                    <div class="tech-name">TeamCity</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Programming, Scripting & OS -->
+        <div class="tech-category">
+            <h4 class="tech-category-title"><i class="fas fa-terminal"></i> Programming, Scripting & OS</h4>
+            <div class="tech-grid">
+                <div class="tech-card fade-in" data-tooltip="Python">
+                    <div class="tech-icon">
+                        <i class="devicon-python-plain colored"></i>
+                    </div>
+                    <div class="tech-name">Python</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="Bash">
+                    <div class="tech-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <div class="tech-name">Bash</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="Linux">
+                    <div class="tech-icon">
+                        <!-- Corrected: Linux icon with visible color -->
+                        <i class="devicon-linux-plain"></i>
+                    </div>
+                    <div class="tech-name">Linux</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Web Servers, Proxies & Virtualization -->
+        <div class="tech-category">
+            <h4 class="tech-category-title"><i class="fas fa-server"></i> Web Servers, Proxies & Virtualization</h4>
+            <div class="tech-grid">
+                <div class="tech-card fade-in" data-tooltip="Apache HTTP Server">
+                    <div class="tech-icon">
+                        <i class="devicon-apache-plain-wordmark colored"></i>
+                    </div>
+                    <div class="tech-name">Apache</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="Nginx">
+                    <div class="tech-icon">
+                        <i class="devicon-nginx-plain colored"></i>
+                    </div>
+                    <div class="tech-name">Nginx</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="HAProxy">
+                    <div class="tech-icon">
+                        <!-- Corrected: HAProxy icon -->
+                        <i class="fas fa-balance-scale-right"></i>
+                    </div>
+                    <div class="tech-name">HAProxy</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="OVM">
+                    <div class="tech-icon">
+                        <!-- Substituted: Generic server icon for OVM -->
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="tech-name">OVM</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="VMware">
+                    <div class="tech-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="tech-name">VMware</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NEW SECTION: Databases -->
+        <div class="tech-category">
+            <h4 class="tech-category-title"><i class="fas fa-database"></i> Databases</h4>
+            <div class="tech-grid">
+                <div class="tech-card fade-in" data-tooltip="PostgreSQL">
+                    <div class="tech-icon">
+                        <i class="devicon-postgresql-plain colored"></i>
+                    </div>
+                    <div class="tech-name">PostgreSQL</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="MySQL">
+                    <div class="tech-icon">
+                        <!-- Added: MySQL Logo -->
+                        <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL" style="height: 40px;">
+                    </div>
+                    <div class="tech-name">MySQL</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="MariaDB">
+                    <div class="tech-icon">
+                        <!-- Added: MariaDB Logo -->
+                        <img src="https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vert_blue-transparent.png" alt="MariaDB" style="height: 40px; width: auto;">
+                    </div>
+                    <div class="tech-name">MariaDB</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="Oracle Database">
+                    <div class="tech-icon">
+                        <!-- Added: Oracle Logo -->
+                        <img src="https://www.oracle.com/a/ocom/img/obic-rainbow-logo.png" alt="Oracle" style="height: 40px;">
+                    </div>
+                    <div class="tech-name">Oracle DB</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NEW SECTION: Monitoring & Observability -->
+        <div class="tech-category">
+            <h4 class="tech-category-title"><i class="fas fa-chart-line"></i> Monitoring & Observability</h4>
+            <p style="color: var(--text-light); margin-bottom: 15px;">Tools for gaining insights into system performance and health.</p>
+            <div class="tech-grid tech-grid-monitoring">
+                <div class="tech-card fade-in" data-tooltip="Prometheus">
+                    <div class="tech-icon">
+                        <i class="devicon-prometheus-original colored"></i>
+                    </div>
+                    <div class="tech-name">Prometheus</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="Grafana">
+                    <div class="tech-icon">
+                        <i class="devicon-grafana-plain colored"></i>
+                    </div>
+                    <div class="tech-name">Grafana</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="New Relic">
+                    <div class="tech-icon">
+                        <!-- Added: New Relic Logo -->
+                        <img src="https://newrelic.com/content/dam/software-assets/logos/New-Relic-logo-N.svg" alt="New Relic" style="height: 35px; filter: brightness(0) invert(1);">
+                    </div>
+                    <div class="tech-name">New Relic</div>
+                </div>
+                <div class="tech-card fade-in" data-tooltip="Splunk">
+                    <div class="tech-icon">
+                        <!-- Added: Splunk Logo -->
+                        <img src="https://www.splunk.com/content/dam/splunk2/en_us/images/logos/splunk-logo.svg" alt="Splunk" style="height: 30px;">
+                    </div>
+                    <div class="tech-name">Splunk</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+      
 
         <!-- Contact Section -->
         <section id="contact">
@@ -567,6 +860,9 @@
                     <p>NIP: 6821797190</p>
                     <p>REGON: 521219465</p>
                     <p>Sole Proprietorship (JDG) since 2023</p>
+                    <p style="margin-top: 10px; font-size: 0.8rem; color: #888;">
+                        <i class="fas fa-info-circle"></i> All product names, logos, and brands are property of their respective owners.
+                    </p>
                 </div>
             </div>
         </section>
@@ -615,17 +911,20 @@
             });
         });
         
-        // Fade in animation on scroll
+        // Fade in animation on scroll with staggered delay
         const fadeElements = document.querySelectorAll('.fade-in');
         
         const fadeInOnScroll = () => {
-            fadeElements.forEach(element => {
+            fadeElements.forEach((element, index) => {
                 const elementTop = element.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
                 
                 if (elementTop < windowHeight - 100) {
-                    element.style.opacity = 1;
-                    element.style.transform = 'translateY(0)';
+                    // Stagger the animation
+                    setTimeout(() => {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }, index * 50);
                 }
             });
         };
@@ -655,6 +954,16 @@
                         behavior: 'smooth'
                     });
                 }
+            });
+        });
+        
+        // Add click effect to tech cards
+        document.querySelectorAll('.tech-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'translateY(-8px) scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-8px) scale(1)';
+                }, 150);
             });
         });
     </script>
