@@ -96,6 +96,8 @@
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid var(--dark-bg);
+            /* Add the line below to scale the photo area up */
+            transform: scale(0.95); /* Try values like 0.93, 0.95, 0.98 */
         }
 
         .photo img {
@@ -674,31 +676,31 @@
             </div>
         </div>
         
-        <!-- Containerization & Orchestration -->
-        <div class="tech-category">
-            <h4 class="tech-category-title"><i class="fas fa-boxes"></i> Container & Orchestration</h4>
-            <div class="tech-grid">
-                <div class="tech-card fade-in" data-tooltip="Kubernetes">
-                    <div class="tech-icon">
-                        <i class="devicon-kubernetes-plain colored"></i>
+            <!-- Containerization & Orchestration -->
+            <div class="tech-category">
+                <h4 class="tech-category-title"><i class="fas fa-boxes"></i> Container & Orchestration</h4>
+                <div class="tech-grid">
+                    <div class="tech-card fade-in" data-tooltip="Kubernetes">
+                        <div class="tech-icon">
+                            <i class="devicon-kubernetes-plain colored"></i>
+                        </div>
+                        <div class="tech-name">Kubernetes</div>
                     </div>
-                    <div class="tech-name">Kubernetes</div>
-                </div>
-                <div class="tech-card fade-in" data-tooltip="Docker">
-                    <div class="tech-icon">
-                        <i class="devicon-docker-plain colored"></i>
+                    <div class="tech-card fade-in" data-tooltip="Docker">
+                        <div class="tech-icon">
+                            <i class="devicon-docker-plain colored"></i>
+                        </div>
+                        <div class="tech-name">Docker</div>
                     </div>
-                    <div class="tech-name">Docker</div>
-                </div>
-                <div class="tech-card fade-in" data-tooltip="ArgoCD">
-                    <div class="tech-icon">
-                        <!-- Corrected: Official ArgoCD logo -->
-                        <img src="https://techicons.dev/icons/argocd" alt="ArgoCD" style="height: 40px;">
+                    <div class="tech-card fade-in" data-tooltip="Docker Swarm">
+                        <div class="tech-icon">
+                            <img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker Swarm" style="height:40px;">
+                        </div>
+                        <div class="tech-name">Docker Swarm</div>
                     </div>
-                    <div class="tech-name">ArgoCD</div>
                 </div>
             </div>
-        </div>
+
 
         <!-- CI/CD & Automation -->
         <div class="tech-category">
@@ -723,11 +725,12 @@
                     <div class="tech-name">TeamCity</div>
                 </div>
                 <div class="tech-card fade-in" data-tooltip="ArgoCD">
-                    <div class="tech-icon">
-                        <img src="https://techicons.dev/icons/argocd" alt="ArgoCD" style="height: 40px;">
-                    </div>
-                    <div class="tech-name">ArgoCD</div>
+                <div class="tech-icon">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/argocd/argocd-original.svg" alt="ArgoCD" style="height:40px;">
                 </div>
+                <div class="tech-name">ArgoCD</div>
+                </div>
+
             </div>
         </div>
         
