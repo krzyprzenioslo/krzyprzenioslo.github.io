@@ -77,29 +77,27 @@
 
         .photo-container {
             position: relative;
-            /* Match the photo's elliptical proportions: */
-            width: 204px;    /* Original 200px * 102% = ~204px */
-            height: 256px;   /* Original 200px * 128% = 256px */
+            width: 240px;
+            height: 240px;
             margin: 0 auto 30px;
-            /* This creates an ellipse when width ≠ height: */
             border-radius: 50%;
             background: var(--gradient);
-            padding: 5px;
-            transition: transform 0.5s ease;
-            /* Ensure it centers properly: */
+            padding: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.15);
         }
 
         .photo-container:hover {
-            transform: scale(1.15);
+            transform: scale(1.12);
         }
 
         .photo {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;       /* key fix: ellipse mask */
+            width: 98%;
+            height: 98%;
+            border-radius: 50%;
             overflow: hidden;
             border: 3px solid var(--dark-bg);
         }
@@ -108,7 +106,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 45%; 
+            object-position: center 22%; /* adjust face position */
         }
 
         .title {
